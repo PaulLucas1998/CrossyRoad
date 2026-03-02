@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
   [SerializeField] private Transform characterModel;
   [SerializeField] private Transform terrainHolder;
   [SerializeField] private TMPro.TextMeshProUGUI scoreText;
-
+  [SerializeField] private Vector3 cameraOffset;
   [Header("Terrain objects")]
   [SerializeField] private Grass grassPrefab;
   [SerializeField] private Road roadPrefab;
@@ -147,7 +147,7 @@ public class GameManager : MonoBehaviour {
     }
 
     // Camera follow at (+2, 4, -3)
-    Vector3 cameraPosition = new(character.position.x + 2, 4, character.position.z - 3);
+    Vector3 cameraPosition = new Vector3(character.position.x, 0, character.position.z) + cameraOffset;
 
     // Limit camera movement in x direction.
     // Only follow the character as it moves to -3 and +3.
